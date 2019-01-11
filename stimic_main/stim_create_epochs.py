@@ -16,7 +16,7 @@ import mne
 import matplotlib.pyplot as plt
 import seaborn as sns
 from utils_eeg_io import io_eeg_macro_to_mne
-from stim_utils import *
+from utils_stim import *
 sns.set()
 sns.set_context('paper')
 
