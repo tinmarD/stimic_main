@@ -5,7 +5,6 @@ Functions for analyzing the stimulation artifacts
 
 See the doc here : https://tinmard.github.io/stimic/index.html
 """
-
 import mne
 import pandas as pd
 import numpy as np
@@ -34,7 +33,7 @@ def plot_artefact_ev_with_electrode_distance(epoch, df, **kwargs):
             if chan_pos_offset_i != -1:
                 stim_data[i, :] = epoch_data[i, chan_pos_offset_i, :]
         stim_data_offset[chan_offset] = np.nanmean(stim_data, axis=0)
-    f = plt.figure()
+    f = plt.figure(figsize=(16, 10))
     ax = f.add_subplot(111)
     for chan_offset in chan_offset_all:
         lw = 3 if chan_offset == 0 else 1
@@ -60,7 +59,7 @@ def plot_mean_artefact(epoch, df, plot_traces=0, color_by=[], resync=False, **kw
         stim_data[i, :] = epoch_data[i, chan_pos_i]
     if resync:
         stim_data, _ = resync_traces_2d(stim_data, epoch.times)
-    f = plt.figure()
+    f = plt.figure(figsize=(16, 10))
     ax = f.add_subplot(111)
     if type(color_by) == str:
         cat_unique = np.unique(df_sel[color_by])
